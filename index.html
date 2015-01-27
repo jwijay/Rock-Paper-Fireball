@@ -22,6 +22,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="js/rpf.js"></script>
+
   </head>
 
   <body>
@@ -46,9 +47,10 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Rock, Paper, or Fireball?</h1>
-            <p class="lead">Make your move!</p>
-            <script>play();</script>
+            <h1 class="cover-heading" id="player_moves">Rock, Paper, or Fireball?</h1>
+            <br/>
+            <p class="lead" id="rpf_result">Make your move!</p>
+            <br/>
             <p class="lead">
               <a href="#" class="btn btn-lg btn-default">Play Again?</a>
             </p>
@@ -71,5 +73,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      //Make some junk that changes the actual HTML content here
+      var messages = play();
+      document.getElementById("player_moves").innerHTML = messages[0];
+      document.getElementById("rpf_result").innerHTML = messages[1];
+
+    </script>
   </body>
 </html>

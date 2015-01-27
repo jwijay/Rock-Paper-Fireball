@@ -1,5 +1,7 @@
 play = function () {
   //for player moves, rock = 1, paper = 2, fireball = 3)
+  var player_moves = "";
+  var rpf_result = "";
   var p1_move = "";
   var p2_move = "";
   var winner = 0;
@@ -28,16 +30,21 @@ play = function () {
   p2_move = computerMove();
 
   //print out player moves
-  console.log("Player 1 played " + p1_move + ". Player 2 played " + p2_move + ".");
+  player_moves = "You played " + p1_move + ".<br\/>I, Masterhand, played " + p2_move + ".";
 
   //now let's decide who the winner is, based on RPF rules
   winner = checkWinner(p1_move, p2_move);
 
   if (winner === 0) {
-    console.log("It's a draw. Nobody wins!");
+    rpf_result = "It's a draw. Nobody wins!";
+  } else if (winner === 1) {
+    rpf_result = "You won.";
   } else {
-    console.log("Winner is player " + winner + "!");
+    //This means the comp (player 2) won.
+    rpf_result = "I (Masterhand) won.";
   }
+
+  return [player_moves, rpf_result];
 };
 
 //AKA Masterhand's move.
