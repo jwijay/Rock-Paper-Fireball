@@ -1,0 +1,88 @@
+play = function () {
+  //for player moves, rock = 1, paper = 2, fireball = 3)
+  var p1_move = "";
+  var p2_move = "";
+  var winner = 0;
+  //prompt user for "Rock", "Paper", or "Fireball"
+  var userChoice = prompt ('Rock, Paper, or Fireball?! ("rock" || "r", "paper" || "p", "fireball" || "f"');
+
+  //maybe later validate user input
+  switch (userChoice) {
+    case "rock":
+    case "r":
+      p1_move = "rock";
+      break;
+    case "paper":
+    case "p":
+      p1_move = "paper";
+      break;
+    case "fireball":
+    case "f":
+      p1_move = "fireball";
+      break;
+    default:
+      console.log("Does not compute.");
+  }
+
+  //player 2 is the computer (for now)...
+  p2_move = computerMove();
+
+  //print out player moves
+  console.log("Player 1 played " + p1_move + ". Player 2 played " + p2_move + ".");
+
+  //now let's decide who the winner is, based on RPF rules
+  winner = checkWinner(p1_move, p2_move);
+
+  if (winner === 0) {
+    console.log("It's a draw. Nobody wins!");
+  } else {
+    console.log("Winner is player " + winner + "!");
+  }
+};
+
+//AKA Masterhand's move.
+computerMove = function() {
+  //for now, we're gonna randomly generate a move (use a dumb AI).
+  //computerMove will return "rock", "paper", or "fireball"
+  var choices = ["rock", "paper", "fireball"];
+  return choices[Math.floor(Math.random() * 3)];
+};
+
+/*
+RULES:
+  rock (1) > fireball (3)
+  fireball (3) > paper (2)
+  paper (2) > rock (1)
+*/
+//checkWinner returns 1 for P1, 2 for P2/computer, or 0 (for draw).
+checkWinner = function (p1_move, p2_move) {
+  var p1_vs_p2 = p1_move + "|" + p2_move;
+  var winner = 0;
+  switch (p1_vs_p2) {
+    case "rock|rock":
+      break;
+    case "paper|paper":
+      break;
+    case "fireball|fireball":
+      break;
+    case "rock|paper":
+      winner = 1;
+      break;
+    case "rock|fireball":
+      winner = 2;
+      break;
+    case "paper|rock":
+      winner = 2;
+      break;
+    case "paper|fireball":
+      winner = 1;
+      break;
+    case "fireball|rock":
+      winner = 1;
+      break;
+    case "fireball|paper":
+      winner = 2;
+      break;
+  }
+  return winner;
+};
