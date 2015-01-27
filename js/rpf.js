@@ -53,11 +53,13 @@ play = function () {
     num_draws++;
   } else if (winner[0] === 1) {
     rpf_result = "You won.";
+    result_img = "img/" + p1_move + ".png";
     p1_wins++;
   } else {
     //This means the comp (player 2) won.
     rpf_result = "I (Masterhand) won.";
-    result_img = "img/masterhand.png";
+    //result_img = "img/masterhand.png";
+    result_img = "img/" + p2_move + ".png";
     p2_wins++;
   }
 
