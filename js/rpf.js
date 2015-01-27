@@ -50,6 +50,7 @@ play = function () {
 
   if (winner[0] === 0) {
     rpf_result = "It's a draw. Nobody wins!";
+    result_img = "img/draw.png";
     num_draws++;
   } else if (winner[0] === 1) {
     rpf_result = "You won.";
