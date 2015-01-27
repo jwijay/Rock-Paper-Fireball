@@ -1,6 +1,7 @@
 var p1_wins = 0;
 var p2_wins = 0;
 var num_draws = 0;
+var next_move = "";
 
 play = function () {
   //for player moves, rock = 1, paper = 2, fireball = 3)
@@ -29,21 +30,28 @@ play = function () {
       break;
     default:
       console.log("Does not compute.");
+      return ["Does not compute. \nTry again.", "", "", [p1_wins, p2_wins, num_draws]];
   }
 
-  //player 2 is the computer (for now)...
-  p2_move = computerMove();
+  //player 2/computer chooses randomly, IF next_move is an empty string
+  //if there is a next_move specified, use it
+  if (next_move === "") {
+    p2_move = randomMove();
+  } else {
+    p2_move = next_move;
+  }
 
   //print out player moves
   player_moves = "You played " + p1_move + ".<br\/>I, Masterhand, played " + p2_move + ".";
 
   //now let's decide who the winner is, based on RPF rules
   winner = checkWinner(p1_move, p2_move);
+  next_move = winner[1];
 
-  if (winner === 0) {
+  if (winner[0] === 0) {
     rpf_result = "It's a draw. Nobody wins!";
     num_draws++;
-  } else if (winner === 1) {
+  } else if (winner[0] === 1) {
     rpf_result = "You won.";
     p1_wins++;
   } else {
@@ -56,10 +64,10 @@ play = function () {
   return [player_moves, rpf_result, result_img, [p1_wins, p2_wins, num_draws]];
 };
 
-//AKA Masterhand's move.
-computerMove = function() {
+//AKA Masterhand's first random move.
+randomMove = function() {
   //for now, we're gonna randomly generate a move (use a dumb AI).
-  //computerMove will return "rock", "paper", or "fireball"
+  //randomMove will return "rock", "paper", or "fireball"
   var choices = ["rock", "paper", "fireball"];
   return choices[Math.floor(Math.random() * 3)];
 };
@@ -100,5 +108,27 @@ checkWinner = function (p1_move, p2_move) {
       winner = 1;
       break;
   }
-  return winner;
+
+  //if winner is 1 (player 1) or 0 (draw), then
+  //play thing that would have beat player 1's previous
+  //move. i.e. if previous move was rock, play paper. THE END.
+  if (winner === 1|| winner === 0) {
+    if (p1_move === "rock") {
+      next_move = "paper";
+    }
+    if (p1_move === "paper") {
+      next_move = "fireball";
+    }
+    if (p1_move === "fireball") {
+      next_move = "rock";
+    }
+  } else {
+    //this means that player 2 (computer) won
+    //in this case, we'll play player 1's last move.
+    //for explanation, see this article:
+    //http://arstechnica.com/science/2014/05/win-at-rock-paper-scissors-by-knowing-thy-opponent/
+    next_move = p1_move;
+  }
+
+  return [winner, next_move];
 };
