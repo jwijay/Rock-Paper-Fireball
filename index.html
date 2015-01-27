@@ -23,6 +23,7 @@
     <![endif]-->
     <script src="js/rpf.js"></script>
 
+
   </head>
 
   <body>
@@ -77,37 +78,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/rpf-render.js"></script>
 
-    <script>
-      update = function() {
-        //Make some junk that changes the actual HTML content here
-        var messages = play();
-
-        var div = document.getElementById("result_img");
-        
-        if (div.firstChild) {
-          div.removeChild(div.firstChild);
-        }
-
-        document.getElementById("player_moves").innerHTML = messages[0];
-        document.getElementById("rpf_result").innerHTML = messages[1];
-
-        var img = new Image();
-        img.onload = function() {
-          div.appendChild(img);
-        };
-        img.src = messages[2];
-        img.setAttribute("class", "img-rounded");
-
-        $("#play_button").show();
-
-        document.getElementById("p1_score").innerHTML = messages[3][0];
-        document.getElementById("p2_score").innerHTML = messages[3][1];
-        document.getElementById("num_draws").innerHTML = messages[3][2];
-      };
-
-      update();
-
-    </script>
   </body>
 </html>

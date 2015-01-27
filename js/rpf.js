@@ -64,6 +64,12 @@ play = function () {
     p2_wins++;
   }
 
+  // return { 'player_move' : player_moves ,
+  //   'rpf_result' : rpf_result ,
+  //   'result_img' : result_img ,
+  //   'score' : [p1_wins, p2_wins, num_draws]};
+
+  //previous code below
   return [player_moves, rpf_result, result_img, [p1_wins, p2_wins, num_draws]];
 };
 
@@ -85,32 +91,19 @@ RULES:
 checkWinner = function (p1_move, p2_move) {
   var p1_vs_p2 = p1_move + "|" + p2_move;
   var winner = 0;
-  switch (p1_vs_p2) {
-    case "rock|rock":
-      break;
-    case "paper|paper":
-      break;
-    case "fireball|fireball":
-      break;
-    case "rock|paper":
-      winner = 2;
-      break;
-    case "rock|fireball":
-      winner = 1;
-      break;
-    case "paper|rock":
-      winner = 1;
-      break;
-    case "paper|fireball":
-      winner = 2;
-      break;
-    case "fireball|rock":
-      winner = 2;
-      break;
-    case "fireball|paper":
-      winner = 1;
-      break;
+
+  if (p1_vs_p2 === "rock|fireball" ||
+      p1_vs_p2 === "paper|rock" ||
+      p1_vs_p2 === "fireball|paper") {
+    winner = 1;
   }
+  if (p1_vs_p2 === "rock|paper" ||
+      p1_vs_p2 === "paper|fireball" ||
+      p1_vs_p2 === "fireball|rock") {
+    winner = 2;
+  }
+  //We will not write the case for draw, since 
+  //by default, checkWinner returns a draw.
 
   //if winner is 1 (player 1) or 0 (draw), then
   //play thing that would have beat player 1's previous
