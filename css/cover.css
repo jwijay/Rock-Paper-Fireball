@@ -2,6 +2,10 @@
  * Globals
  */
 
+#play_button {
+  display: none;
+}
+
 /* Links */
 a,
 a:focus,

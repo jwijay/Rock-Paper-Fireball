@@ -1,3 +1,7 @@
+var p1_wins = 0;
+var p2_wins = 0;
+var num_draws = 0;
+
 play = function () {
   //for player moves, rock = 1, paper = 2, fireball = 3)
   var player_moves = "";
@@ -38,15 +42,18 @@ play = function () {
 
   if (winner === 0) {
     rpf_result = "It's a draw. Nobody wins!";
+    num_draws++;
   } else if (winner === 1) {
     rpf_result = "You won.";
+    p1_wins++;
   } else {
     //This means the comp (player 2) won.
     rpf_result = "I (Masterhand) won.";
     result_img = "img/masterhand.png";
+    p2_wins++;
   }
 
-  return [player_moves, rpf_result, result_img];
+  return [player_moves, rpf_result, result_img, [p1_wins, p2_wins, num_draws]];
 };
 
 //AKA Masterhand's move.

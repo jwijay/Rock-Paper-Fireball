@@ -37,8 +37,11 @@
             <div class="inner">
               <h3 class="masthead-brand">Rock, Paper, Fireball!!!</h3>
               <nav>
+<!--               We are "re-purposing" bootstrap's styling for nav bars -->
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="index.html">Play</a></li>
+                  <li class="active"><a href="#">You: <span id="p1_score">0</span></a></li>
+                  <li class="active"><a href="#">Masterhand: <span id="p2_score">0</span></a></li>
+                  <li class="active"><a href="#">Draws: <span id="num_draws">0</span></a></li>
 <!--                   <li><a href="#">Features</a></li>
                   <li><a href="#">Contact</a></li> -->
                 </ul>
@@ -53,7 +56,7 @@
             <p class="lead" id="rpf_result">Make your move!</p>
             <br/>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Play Again?</a>
+              <a href="#" class="btn btn-lg btn-default" id="play_button">Play Again?</a>
             </p>
           </div>
 
@@ -80,6 +83,22 @@
       var messages = play();
       document.getElementById("player_moves").innerHTML = messages[0];
       document.getElementById("rpf_result").innerHTML = messages[1];
+
+      var img = new Image();
+      var div = document.getElementById("result_img");
+      img.onload = function() {
+        div.appendChild(img);
+      };
+      img.src = messages[2];
+
+      $("#play_button").show();
+
+      document.getElementById("p1_score").innerHTML = messages[3][0];
+      document.getElementById("p2_score").innerHTML = messages[3][1];
+      document.getElementById("num_draws").innerHTML = messages[3][2];
+
+
+
     </script>
   </body>
 </html>
