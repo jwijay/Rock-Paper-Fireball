@@ -82,22 +82,22 @@ checkWinner = function (p1_move, p2_move) {
     case "fireball|fireball":
       break;
     case "rock|paper":
-      winner = 1;
+      winner = 2;
       break;
     case "rock|fireball":
-      winner = 2;
+      winner = 1;
       break;
     case "paper|rock":
-      winner = 2;
+      winner = 1;
       break;
     case "paper|fireball":
-      winner = 1;
+      winner = 2;
       break;
     case "fireball|rock":
-      winner = 1;
+      winner = 2;
       break;
     case "fireball|paper":
-      winner = 2;
+      winner = 1;
       break;
   }
   return winner;
