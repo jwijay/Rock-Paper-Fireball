@@ -35,7 +35,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Rock, Paper, Fireball!!!</h3>
+              <h3 class="masthead-brand"><a href="index.html">Rock, Paper, Fireball!!!</a></h3>
               <nav>
 <!--               We are "re-purposing" bootstrap's styling for nav bars -->
                 <ul class="nav masthead-nav">
@@ -56,7 +56,7 @@
             <p class="lead" id="rpf_result">Make your move!</p>
             <br/>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default" id="play_button">Play Again?</a>
+              <a href="#" class="btn btn-lg btn-default" id="play_button" onclick="update()">Play Again?</a>
             </p>
           </div>
 
@@ -79,25 +79,33 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-      //Make some junk that changes the actual HTML content here
-      var messages = play();
-      document.getElementById("player_moves").innerHTML = messages[0];
-      document.getElementById("rpf_result").innerHTML = messages[1];
+      update = function() {
+        //Make some junk that changes the actual HTML content here
+        var messages = play();
 
-      var img = new Image();
-      var div = document.getElementById("result_img");
-      img.onload = function() {
-        div.appendChild(img);
+        var div = document.getElementById("result_img");
+        
+        if (div.firstChild) {
+          div.removeChild(div.firstChild);
+        }
+
+        document.getElementById("player_moves").innerHTML = messages[0];
+        document.getElementById("rpf_result").innerHTML = messages[1];
+
+        var img = new Image();
+        img.onload = function() {
+          div.appendChild(img);
+        };
+        img.src = messages[2];
+
+        $("#play_button").show();
+
+        document.getElementById("p1_score").innerHTML = messages[3][0];
+        document.getElementById("p2_score").innerHTML = messages[3][1];
+        document.getElementById("num_draws").innerHTML = messages[3][2];
       };
-      img.src = messages[2];
 
-      $("#play_button").show();
-
-      document.getElementById("p1_score").innerHTML = messages[3][0];
-      document.getElementById("p2_score").innerHTML = messages[3][1];
-      document.getElementById("num_draws").innerHTML = messages[3][2];
-
-
+      update();
 
     </script>
   </body>

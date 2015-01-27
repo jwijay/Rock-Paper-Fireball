@@ -1,4 +1,4 @@
-# Rock Paper Fireball!!! 
+# Rock Paper Fireball
 
 ## The Setup
 - Whiteboard the problem, discuss your solutions among your group
@@ -24,6 +24,7 @@ The game will be played in 3 phases:
 The game will be rendered onto an (valid html5) web page.
 
 ## Bonus
-- Add Graphics
+- Add graphics
 - Add a play again button
+- Add a score board
 - Make the computer *learn*

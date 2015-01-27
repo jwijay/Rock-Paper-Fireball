@@ -6,12 +6,12 @@ play = function () {
   //for player moves, rock = 1, paper = 2, fireball = 3)
   var player_moves = "";
   var rpf_result = "";
-  var result_image = "";
+  var result_img = "";
   var p1_move = "";
   var p2_move = "";
   var winner = 0;
   //prompt user for "Rock", "Paper", or "Fireball"
-  var userChoice = prompt ('Rock, Paper, or Fireball?! ("rock" || "r", "paper" || "p", "fireball" || "f")');
+  var userChoice = prompt ('Rock, Paper, or Fireball?! \nPossible inputs: rock (r), paper (p), fireball (f)');
 
   //maybe later validate user input
   switch (userChoice) {
