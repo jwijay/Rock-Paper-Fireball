@@ -4,7 +4,7 @@ play = function () {
   var p2_move = "";
   var winner = 0;
   //prompt user for "Rock", "Paper", or "Fireball"
-  var userChoice = prompt ('Rock, Paper, or Fireball?! ("rock" || "r", "paper" || "p", "fireball" || "f"');
+  var userChoice = prompt ('Rock, Paper, or Fireball?! ("rock" || "r", "paper" || "p", "fireball" || "f")');
 
   //maybe later validate user input
   switch (userChoice) {
