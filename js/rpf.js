@@ -2,6 +2,7 @@ play = function () {
   //for player moves, rock = 1, paper = 2, fireball = 3)
   var player_moves = "";
   var rpf_result = "";
+  var result_image = "";
   var p1_move = "";
   var p2_move = "";
   var winner = 0;
@@ -42,9 +43,10 @@ play = function () {
   } else {
     //This means the comp (player 2) won.
     rpf_result = "I (Masterhand) won.";
+    result_img = "img/masterhand.png";
   }
 
-  return [player_moves, rpf_result];
+  return [player_moves, rpf_result, result_img];
 };
 
 //AKA Masterhand's move.

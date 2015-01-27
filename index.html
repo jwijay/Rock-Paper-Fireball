@@ -38,7 +38,7 @@
               <h3 class="masthead-brand">Rock, Paper, Fireball!!!</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Play</a></li>
+                  <li class="active"><a href="index.html">Play</a></li>
 <!--                   <li><a href="#">Features</a></li>
                   <li><a href="#">Contact</a></li> -->
                 </ul>
@@ -49,6 +49,7 @@
           <div class="inner cover">
             <h1 class="cover-heading" id="player_moves">Rock, Paper, or Fireball?</h1>
             <br/>
+            <div id="result_img"></div>
             <p class="lead" id="rpf_result">Make your move!</p>
             <br/>
             <p class="lead">
@@ -79,7 +80,6 @@
       var messages = play();
       document.getElementById("player_moves").innerHTML = messages[0];
       document.getElementById("rpf_result").innerHTML = messages[1];
-
     </script>
   </body>
 </html>
